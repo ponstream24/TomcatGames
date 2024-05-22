@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	トランプアプリ
+	<p>
+	<form action="/s2232103/CardTest2" method="POST">
+		<div>記号：
+			<input type="radio" name="suit" value="spade" checked>スペード
+			<input type="radio" name="suit" value="heart">ハート
+			<input type="radio" name="suit" value="diamond">ダイヤ
+			<input type="radio" name="suit" value="club">クラブ
+			<input type="radio" name="suit" value="all">全て
+		</div>
+		<p>
+		<div>数字：
+			<input type="checkbox" name="number" value="0">A
+			<input type="checkbox" name="number" value="1">2
+			<input type="checkbox" name="number" value="2">3
+			<input type="checkbox" name="number" value="3">4
+			<input type="checkbox" name="number" value="4">5
+			<input type="checkbox" name="number" value="5">6
+			<input type="checkbox" name="number" value="6">7
+			<input type="checkbox" name="number" value="7">8
+			<input type="checkbox" name="number" value="8">9
+			<input type="checkbox" name="number" value="9">10
+			<input type="checkbox" name="number" value="10">J
+			<input type="checkbox" name="number" value="11">Q
+			<input type="checkbox" name="number" value="12">K
+			<input type="checkbox" name="number" value="99">全て
+		</div>
+		<p>
+		<div>色：
+			<select name="color">
+				<option value="red">赤</option>
+				<option value="black">黒</option>
+				<option value="both">赤と黒</option>
+			</select>
+		</div>
+		<p>
+		<div>他：<input type="text" name="query"></div>
+		<p>
+		<input type="submit" value="送信">
+	</form>
+</body>
+</html> 
