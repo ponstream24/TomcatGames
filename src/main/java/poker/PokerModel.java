@@ -12,6 +12,7 @@ public class PokerModel {
     int games;
     /** 現在のチップ数 初期値は500 */
     int chips;
+    int oldChips = 500;
     /** 山札 */
     List<Integer> deckcards;
     /** 手札 */
@@ -59,7 +60,7 @@ public class PokerModel {
         message = "交換するカードをクリックしてください";
         buttonLabel = "交換";
         games++;
-        
+        oldChips = chips;
     }
 
     /** JSPから呼び出されるメソッド */
@@ -70,6 +71,10 @@ public class PokerModel {
     /** 現在のチップ数を返す */
     public int getChips() {
         return chips;
+    }
+
+    public int getOldChips() {
+        return oldChips;
     }
 
     /** 5枚の手札のうち，i番目のカード番号を返す (i=0～4) */
@@ -111,6 +116,8 @@ public class PokerModel {
 
     /** 役の判別を行い、チップを増減させる */
     public void evaluate() {
+        System.out.println(countSameNumber(handcards));
+        System.out.println(handcards.get(0)+","+  handcards.get(1)+","+  handcards.get(2)+","+  handcards.get(3)+","+ handcards.get(4));
         countNumber();
         int red = countRed();
         int seven = countSeven();
@@ -168,8 +175,10 @@ public class PokerModel {
             point = -200;
         }
         
+        oldChips = chips;
         chips += point;
         message += ": " + point;
+        
     }
 
     /** 数字毎に手札の枚数を数える */

@@ -27,18 +27,18 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 	<header> 
 		<div class="title">ポーカーゲーム</div>
 		<div class="count">ゲーム回数：<%=model.getGames()%></div>
-		<div class="chip"><%=model.getChips()%></div>
+		<div class="chip" data-newpoint="<%=model.getChips()%>点"><%=model.getOldChips()%>点</div>
 	</header>
 	<hr>
 	<%
 	if (label.equalsIgnoreCase(koukan)) {
 	%>
-	<div id="message" style="opacity: 1"><%=model.getMessage()%></div>
+	<div id="message" data-message="<%=model.getMessage()%>"><%=model.getMessage()%></div>
 	<%
 	} else {
 	%>
 
-	<div id="message" style="opacity: 0"><%=model.getMessage()%></div>
+	<div id="message" data-message="<%=model.getMessage()%>">クリックしてめくってください</div>
 	<%
 	}
 	%>
@@ -52,8 +52,8 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 				if (label.equalsIgnoreCase(koukan) || (list != null && list.contains(i + ""))) {
 				%>
 				<td><label for="change_<%=i%>"> <img src="cards/c1.png"
-						data-src="cards/<%=model.getHandcardAt(i)%>.png" width="100"
-						height="150"> <input type="checkbox" name="change"
+						data-src="cards/<%=model.getHandcardAt(i)%>.png" width="150"
+						height="225"> <input type="checkbox" name="change"
 						onclick="playdrowSound()" value="<%=i%>" id="change_<%=i%>"
 						<%=disabled%>>
 				</label></td>
@@ -61,8 +61,8 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 				} else {
 				%>
 				<td><label for="change_<%=i%>"> <img class="open"
-						src="cards/<%=model.getHandcardAt(i)%>.png" width="100"
-						height="150"> <input type="checkbox" name="change"
+						src="cards/<%=model.getHandcardAt(i)%>.png" width="150"
+						height="225"> <input type="checkbox" name="change"
 						onclick="playdrowSound()" value="<%=i%>" id="change_<%=i%>"
 						<%=disabled%>>
 				</label></td>
@@ -95,7 +95,8 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 
 			setTimeout( () => {
 				if( document.querySelectorAll("img").length == document.querySelectorAll("img.open").length ){
-					document.getElementById("message").style.opacity = 1;
+					document.getElementById("message").innerText = document.getElementById("message").dataset.message;
+					document.querySelector(".chip").innerText = document.querySelector(".chip").dataset.newpoint;
 					document.getElementById("bot").style.opacity = 1;
 
 

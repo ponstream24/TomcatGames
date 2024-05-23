@@ -53,7 +53,7 @@ public class Util {
     }
     
     public static boolean isQuads(List<Integer> cards) {
-        return countSameNumber(cards) == 6;
+        return countSameNumber(cards) == 10;
     }
 
     public static boolean isFullHouse(List<Integer> cards) {
