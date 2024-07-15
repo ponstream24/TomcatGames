@@ -5,22 +5,24 @@ import java.util.List;
 
 public class Util {
 
+    // カード番号からスートに変換
     public static int getSuit(int a) {
 
-//        System.out.println("getSuit :" + a + " : " + ((int)a / 13));
         return a / 13;
     }
     
+    // カード番号から数字に変換
     public static int getNumber(int a) {
-//        System.out.println("getNumber :" + a + " : " + (a % 13));
         return a % 13;
     }
     
+    // スートの一致を確認
     public static boolean suitCheck(int a, int b) {
         
         return getSuit(a) == getSuit(b);
     }
 
+    // 各数字の数字を数える
     public static int countSameNumber(List<Integer> cards) {
         int count = 0;
         for(int i = 0; i < 5; ++i) {

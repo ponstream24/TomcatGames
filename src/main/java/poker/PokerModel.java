@@ -116,8 +116,6 @@ public class PokerModel {
 
     /** 役の判別を行い、チップを増減させる */
     public void evaluate() {
-        System.out.println(countSameNumber(handcards));
-        System.out.println(handcards.get(0)+","+  handcards.get(1)+","+  handcards.get(2)+","+  handcards.get(3)+","+ handcards.get(4));
         countNumber();
         int red = countRed();
         int seven = countSeven();
