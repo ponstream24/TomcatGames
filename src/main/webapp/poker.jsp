@@ -23,11 +23,11 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 <title>Poker</title>
 <link rel="stylesheet" href="css/common.css">
 </head>
-<body>
+<body id="pockerhtml">
 	<header> 
 		<div class="title">ポーカーゲーム</div>
 		<div class="count">ゲーム回数：<%=model.getGames()%></div>
-		<div class="chip" data-newpoint="<%=model.getChips()%>点"><%=model.getOldChips()%>点</div>
+		<div class="chip" data-newpoint="<%=model.getChips()%>"><%=model.getOldChips()%>点</div>
 	</header>
 	<hr>
 	<%
@@ -96,7 +96,7 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 			setTimeout( () => {
 				if( document.querySelectorAll("img").length == document.querySelectorAll("img.open").length ){
 					document.getElementById("message").innerText = document.getElementById("message").dataset.message;
-					document.querySelector(".chip").innerText = document.querySelector(".chip").dataset.newpoint;
+					document.querySelector(".chip").innerText = document.querySelector(".chip").dataset.newpoint + "点";
 					document.getElementById("bot").style.opacity = 1;
 
 
@@ -106,7 +106,7 @@ List<String> list = (List<String>) request.getAttribute("changelist");
 						payOut.src = "sound/coin-donation-3-181411.mp3";
 						payOut.play();
 
-						if( Number(document.querySelector(".chip").innerText) < 0 ){
+						if( Number(document.querySelector(".chip").dataset.newpoint) < 0 ){
 							setTimeout( () => {
 								showGameOver();
 							}, 500 )
